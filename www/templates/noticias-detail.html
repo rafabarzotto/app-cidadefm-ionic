@@ -1,0 +1,12 @@
+<ion-view view-title="Notícias">
+    <ion-content class="has-header">
+        <div class="row responsive-sm">
+            <div class="col"> <img ng-src="{{image}}" class="media-object" width="100%" img-cache/>
+                <div class="item-single-cont">
+                    <h3 align="center" ng-bind-html="posts.title.rendered"></h3>
+                    <p ng-bind-html="posts.excerpt.rendered"></p>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

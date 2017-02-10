@@ -1,0 +1,30 @@
+<ion-modal-view ng-controller="SobreCtrl">
+    <ion-header-bar class="bar-energized">
+        <h1 class="title">Sobre</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeSobre()"><i class="icon ion-android-close"></i></button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list card">
+            <div class="item">
+                <p>Desenvolvido por:</p>
+                <h2>Rafael Barzotto</h2>
+            </div>
+        </div>
+        <div class="list">
+            <a class="item item-icon-left" ng-click="openMail('rafabarzotto@hotmail.com')">
+                <i class="icon ion-ios-email-outline"></i> rafabarzotto@hotmail.com
+            </a>
+            <a class="item item-icon-left" ng-click="openFb()">
+                <i class="icon ion-social-facebook"></i> facebook.com/rafabarzotto
+            </a>
+            <a class="item item-icon-left" ng-click="openLinkedin()">
+                <i class="icon ion-social-linkedin"></i> LinkedIn
+            </a>
+            <a class="item item-icon-left" ng-click="openGit()">
+                <i class="icon ion-social-github"></i> github.com/rafabarzotto
+            </a>
+        </div>
+    </ion-content>
+</ion-modal-view>

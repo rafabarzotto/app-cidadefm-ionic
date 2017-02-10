@@ -1,0 +1,12 @@
+
+{
+  "name": "Cidade FM",
+  "short_name": "Cidade FM",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+    "src": "icon.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }]
+}

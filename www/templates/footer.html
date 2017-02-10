@@ -1,0 +1,14 @@
+<div class="bar bar-footer bar-stable sub-footer">
+    <ion-footer-bar class="bar-stable" on-swipe-up="radio()" ng-controller="RadioCtrl">
+        <div class="buttons">
+            <button id="playBtn" class="button button-clear button-assertive icon {{ isPlaying ? 'ion-ios-pause' : 'ion-ios-play' }}" ng-click="radioPlay()"></button>
+        </div>
+        <div class="title">{{status}}</div>
+        <div class="buttons">
+            <button class="button button-clear">
+                <ion-spinner icon="lines" ng-if="isPlaying">
+                </ion-spinner>
+            </button>
+        </div>
+    </ion-footer-bar>
+</div>

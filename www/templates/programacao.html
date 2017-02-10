@@ -1,0 +1,17 @@
+<ion-view view-title="{{navTitle}}">
+  <ion-content>
+    <ion-refresher
+    pulling-text="Deslize para atualizar..."
+    on-refresh="getItems()">
+  </ion-refresher>
+            <ion-list>
+            <ion-item class="item item-avatar" ng-repeat="prog in progs" href="#/app/playlists/{{playlist.id}}">
+                <img src="cover.jpg">
+                <h2>{{prog.nome}} - {{prog.horario}}</h2> 
+                <p>Com: {{prog.locutor}}</p>
+            </ion-item>
+        </ion-list>
+  </ion-content>
+</ion-view>
+
+

@@ -1,0 +1,15 @@
+{
+  "name": "cidadefm",
+  "app_id": "a44334e0",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "www/css/*",
+    "!www/lib/**/*",
+    "!www/**/*.map",
+    "scss/*"
+  ]
+}

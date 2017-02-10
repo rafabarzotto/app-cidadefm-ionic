@@ -1,0 +1,17 @@
+<ion-view view-title="{{navTitle}}">
+  <ion-nav-buttons side="secondary">
+    <button class="button button-icon icon ion-ios-search-strong" ng-click="showFilterBar()"></button>
+  </ion-nav-buttons>
+    <ion-content delegate-handle="agendaScrollDelegate">
+        <ion-refresher pulling-text="Deslize para atualizar..." on-refresh="getItems()">
+        </ion-refresher>
+        <ion-list>
+            <ion-item class="item item-thumbnail-left item-text-wrap" ng-repeat="post in posts" href="#/app/noticias/{{post.id}}">
+                <img ng-src="{{images[$index]}}" class="media-object">
+                <h2 ng-bind-html="post.title.rendered"></h2>
+                <p ng-bind-html="post.excerpt.rendered"></p>
+                <p><a>Leia-Mais</a></p>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
