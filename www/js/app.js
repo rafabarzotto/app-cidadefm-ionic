@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'jett.ionic.filter.bar', 'ion-affix'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
 
 .run(function($ionicPlatform, $ionicPopup) {
   $ionicPlatform.ready(function() {
@@ -32,14 +32,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $ionicFilterBarConfigProvider) {
-
-  $ionicFilterBarConfigProvider.theme('light');
-  $ionicFilterBarConfigProvider.clear('ion-close');
-  $ionicFilterBarConfigProvider.search('ion-search');
-  $ionicFilterBarConfigProvider.backdrop(true);
-  $ionicFilterBarConfigProvider.transition('vertical');
-  $ionicFilterBarConfigProvider.placeholder('Buscar...');
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
   $ionicConfigProvider.backButton.previousTitleText(false);
   $ionicConfigProvider.backButton.text('');

@@ -36,7 +36,7 @@ angular.module('starter.controllers', [])
 .controller('RadioCtrl', function($scope, $rootScope, $cordovaMedia, $ionicPopup, ConnectivityMonitor, AudioSvc) {
 
     $scope.isPlaying = false;
-    var src = 'http://audio.wbhm.org:8000/live.mp3';
+    var src = 'http://198.143.132.154:11798';
 
     if ($scope.isPlaying) {
         $scope.status = 'Reproduzindo ...';
@@ -72,28 +72,17 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('NoticiasCtrl', function($scope, $http, $ionicFilterBar, wpFactory, LoadingService) {
+.controller('NoticiasCtrl', function($scope, $http, wpFactory, LoadingService, $timeout) {
 
     $scope.navTitle = '<img class="title-image" style="height: 27px;margin-top: 8px;" src="img/logo.png" />';
-
-    $scope.showFilterBar = function() {
-        filterBarInstance = $ionicFilterBar.show({
-            items: $scope.posts,
-            update: function(filteredItems, filterText) {
-                $scope.posts = filteredItems;
-                if (filterText) {
-                    console.log(filterText);
-                }
-            }
-        });
-    };
+    $scope.newsAPI = 'http://www.cidadefm10.com.br/site/wp-json/wp/v2/posts'; 
 
     $scope.posts = [];
     $scope.images = {};
 
+    LoadingService.show();
     $scope.getItems = function() {
-        LoadingService.show();
-        wpFactory.getPosts(5).then(function(succ) {
+        wpFactory.getPosts(10).then(function(succ) {
             $scope.posts = succ;
             angular.forEach(succ, function(value, index) {
                 $scope.setUrlForImage(index, value.featured_media);
@@ -145,7 +134,7 @@ angular.module('starter.controllers', [])
     $scope.navTitle = '<img class="title-image" style="height: 27px;margin-top: 8px;" src="img/logo.png" />';
 
     $scope.getItems = function() {
-        $http.get("https://raw.githubusercontent.com/rafabarzotto/app-radiocidade-configs/master/json/progs.json")
+        $http.get("http://cidadefm10.com.br/app/progs.php")
             .then(function(response) {
                 $scope.progs = response.data.progs;
             }, function(error) {}).finally(function() {
@@ -162,9 +151,9 @@ angular.module('starter.controllers', [])
     $scope.navTitle = '<img class="title-image" style="height: 27px;margin-top: 8px;" src="img/logo.png" />';
 
     $scope.getItems = function() {
-        $http.get("https://raw.githubusercontent.com/rafabarzotto/app-radiocidade-configs/master/json/equipes.json")
+        $http.get("http://www.cidadefm10.com.br/app/equipe.php")
             .then(function(response) {
-                $scope.equipes = response.data.equipes;
+                $scope.equipes = response.data.equipe;
             }, function(error) {}).finally(function() {
                 $scope.$broadcast('scroll.refreshComplete');
             });
