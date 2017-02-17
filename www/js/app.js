@@ -7,114 +7,116 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
 
 .run(function($ionicPlatform, $ionicPopup) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-    }
+    $ionicPlatform.ready(function() {
+        // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+        // for form inputs)
 
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      //StatusBar.styleDefault();
-      StatusBar.styleLightContent();
-    }
+        if (window.cordova && window.cordova.plugins.Keyboard) {
+            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+            cordova.plugins.backgroundMode.enable();
+        }
 
-    if (window.Connection) {
-      if (navigator.connection.type == Connection.NONE) {
-        $ionicPopup.alert({
-          title: "Internet Offline",
-          content: "Verifique se seu aparelho está conectado na Internet!"
-        });
-      }
-    }
+        if (window.StatusBar) {
+            // org.apache.cordova.statusbar required
+            //StatusBar.styleDefault();
+            StatusBar.styleLightContent();
+        }
 
-  });
+        if (window.Connection) {
+            if (navigator.connection.type == Connection.NONE) {
+                $ionicPopup.alert({
+                    title: "Internet Offline",
+                    content: "Verifique se seu aparelho está conectado na Internet!"
+                });
+            }
+        }
+
+    });
 })
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
-  $ionicConfigProvider.backButton.previousTitleText(false);
-  $ionicConfigProvider.backButton.text('');
-  $ionicConfigProvider.navBar.alignTitle('');
-  //$ionicConfigProvider.tabs.position('bottom');
+    $ionicConfigProvider.backButton.previousTitleText(false);
+    $ionicConfigProvider.backButton.text('');
+    $ionicConfigProvider.navBar.alignTitle('');
+    //$ionicConfigProvider.tabs.position('bottom');
 
-  $stateProvider
+    $stateProvider
 
-    .state('app', {
-    url: "/app",
-    abstract: true,
-    templateUrl: "templates/menu.html",
-    controller: 'AppCtrl'
-  })
+        .state('app', {
+        url: "/app",
+        abstract: true,
+        templateUrl: "templates/menu.html",
+        controller: 'AppCtrl'
+    })
 
-  .state('app.home', {
-    url: "/home",
-    cache: false,
-    views: {
-      'tab-home': {
-        templateUrl: "templates/home.html",
-        controller: 'HomeCtrl'
-      }
-    }
-  })
+    .state('app.home', {
+        url: "/home",
+        cache: false,
+        views: {
+            'tab-home': {
+                templateUrl: "templates/home.html",
+                controller: 'HomeCtrl'
+            }
+        }
+    })
 
-  .state('app.noticias', {
-    url: "/noticias",
-    cache: true,
-    views: {
-      'tab-noticias': {
-        templateUrl: "templates/noticias.html",
-        controller: 'NoticiasCtrl'
-      }
-    }
-  })
+    .state('app.noticias', {
+        url: "/noticias",
+        cache: true,
+        views: {
+            'tab-noticias': {
+                templateUrl: "templates/noticias.html",
+                controller: 'NoticiasCtrl'
+            }
+        }
+    })
 
     .state('app.noticias-detail', {
-    url: "/noticias/:id",
-    cache: true,
-    views: {
-      'tab-noticias': {
-        templateUrl: "templates/noticias-detail.html",
-        controller: 'NoticiasDtCtrl'
-      }
-    }
-  })
+        url: "/noticias/:id",
+        cache: true,
+        views: {
+            'tab-noticias': {
+                templateUrl: "templates/noticias-detail.html",
+                controller: 'NoticiasDtCtrl'
+            }
+        }
+    })
 
-  .state('app.programacao', {
-    url: "/programacao",
-    cache: true,
-    views: {
-      'tab-programacao': {
-        templateUrl: "templates/programacao.html",
-        controller: 'ProgramacaoCtrl'
-      }
-    }
-  })
+    .state('app.programacao', {
+        url: "/programacao",
+        cache: true,
+        views: {
+            'tab-programacao': {
+                templateUrl: "templates/programacao.html",
+                controller: 'ProgramacaoCtrl'
+            }
+        }
+    })
 
-  .state('app.equipe', {
-    url: "/equipe",
-    cache: true,
-    views: {
-      'tab-equipe': {
-        templateUrl: "templates/equipe.html",
-        controller: 'EquipeCtrl'
-      }
-    }
-  })
+    .state('app.equipe', {
+        url: "/equipe",
+        cache: true,
+        views: {
+            'tab-equipe': {
+                templateUrl: "templates/equipe.html",
+                controller: 'EquipeCtrl'
+            }
+        }
+    })
 
-  .state('app.contato', {
-    url: "/contato",
-    cache: true,
-    views: {
-      'tab-contato': {
-        templateUrl: "templates/contato.html",
-        controller: 'ContatoCtrl'
-      }
-    }
-  });
+    .state('app.contato', {
+        url: "/contato",
+        cache: true,
+        views: {
+            'tab-contato': {
+                templateUrl: "templates/contato.html",
+                controller: 'ContatoCtrl'
+            }
+        }
+    });
 
 
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise('/app/home');
 });

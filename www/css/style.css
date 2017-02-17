@@ -1,7 +1,12 @@
-.platform-ios .has-footer.has-tabs{
-	bottom: 93px;
+.platform-ios .has-footer.has-tabs {
+    bottom: 93px;
 }
 
-.platform-ios .sub-footer{
-	bottom:49px !important;
+.platform-ios .sub-footer {
+    bottom: 49px !important;
+}
+
+#player {
+    width: 100%;
+    height: : 100%;
 }

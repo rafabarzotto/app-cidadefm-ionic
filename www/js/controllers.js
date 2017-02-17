@@ -33,10 +33,28 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('RadioCtrl', function($scope, $rootScope, $cordovaMedia, $ionicPopup, ConnectivityMonitor, AudioSvc) {
+.controller('RadioCtrl', function($scope, $rootScope, $ionicPopup, ConnectivityMonitor) {
+
 
     $scope.isPlaying = false;
-    var src = 'http://198.143.132.154:11798';
+    var src = 'http://198.143.132.154:11798/;';
+
+    $scope.playWebAudio = function() {
+        try {
+            $scope.audio = new Audio(src);
+            $scope.audio.play();
+        } catch (err) {
+
+        }
+    }
+
+    $scope.pauseWebAudio = function() {
+        try {
+            $scope.audio.pause();
+        } catch (err) {
+
+        }
+    }
 
     if ($scope.isPlaying) {
         $scope.status = 'Reproduzindo ...';
@@ -48,11 +66,11 @@ angular.module('starter.controllers', [])
         if (ConnectivityMonitor.isOnline() && !$scope.isPlaying) {
             $scope.isPlaying = true;
             $scope.status = 'Reproduzindo ...';
-            AudioSvc.playAudio(src);
+            $scope.playWebAudio();
         } else if ($scope.isPlaying) {
             $scope.isPlaying = false;
             $scope.status = 'Pausado...'
-            AudioSvc.releaseAudio();
+            $scope.pauseWebAudio();
         } else {
             $scope.isPlaying = false;
             $scope.status = 'Pausado...';
@@ -60,7 +78,7 @@ angular.module('starter.controllers', [])
                 title: "Internet Offline",
                 content: "Verifique se seu aparelho está conectado na Internet!"
             });
-            AudioSvc.releaseAudio();
+            $scope.pauseWebAudio();
         }
     }
 
@@ -75,7 +93,7 @@ angular.module('starter.controllers', [])
 .controller('NoticiasCtrl', function($scope, $http, wpFactory, LoadingService, $timeout) {
 
     $scope.navTitle = '<img class="title-image" style="height: 27px;margin-top: 8px;" src="img/logo.png" />';
-    $scope.newsAPI = 'http://www.cidadefm10.com.br/site/wp-json/wp/v2/posts'; 
+    $scope.newsAPI = 'http://www.cidadefm10.com.br/site/wp-json/wp/v2/posts';
 
     $scope.posts = [];
     $scope.images = {};
@@ -90,6 +108,7 @@ angular.module('starter.controllers', [])
             LoadingService.hide();
         }, function error(err) {
             console.log('Errror: ', err);
+            LoadingService.hide();
         }).finally(function() {
             $scope.$broadcast('scroll.refreshComplete');
         });
