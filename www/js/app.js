@@ -14,6 +14,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         if (window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             cordova.plugins.backgroundMode.enable();
+            cordova.plugins.backgroundMode.setDefaults({
+                title: "Cidade FM 87.9",
+                text: "Ao Vivo",
+                icon: 'icon.png', // this will look for icon.png in platforms/android/res/drawable|mipmap
+                resume: true,
+                hidden: true
+            })
         }
 
         if (window.StatusBar) {
