@@ -33,11 +33,22 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('RadioCtrl', function($scope, $rootScope, $ionicPopup, ConnectivityMonitor) {
+.controller('RadioCtrl', function($scope, $rootScope, $ionicPopup, ConnectivityMonitor, $http) {
 
 
     $scope.isPlaying = false;
-    var src = 'http://198.143.132.154:11798/;';
+    var src = '';
+
+    $scope.getItems = function() {
+        $http.get("https://rafabarzotto.github.io/app-radiocidade-configs/url.json")
+            .then(function(response) {
+                src = response.data['url'];
+            }, function(error) {
+
+            });
+    }
+
+    $scope.getItems();
 
     $scope.playWebAudio = function() {
         try {

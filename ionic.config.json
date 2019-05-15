@@ -1,6 +1,9 @@
 {
   "name": "cidadefm",
-  "app_id": "a44334e0",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic1",
   "gulpStartupTasks": [
     "sass",
     "watch"

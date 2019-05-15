@@ -1,5 +1,26 @@
-```bash
-$ ionic platform add ios
-$ ionic build ios
-$ ionic build android
-```
+ionic cordova platform remove android
+ionic cordova platform add android@x.x.x
+
+ionic cordova plugin remove (ALL)
+
+//REINSTALL PLUGINS
+ionic cordova plugin add cordova-plugin-console cordova-plugin-device cordova-plugin-background-mode
+ionic cordova plugin add cordova-plugin-inappbrowser cordova-plugin-network-information cordova-plugin-splashscreen cordova-plugin-whitelist ionic-plugin-keyboard
+
+ionic cordova build
+
+
+
+###
+ionic cordova plugin add cordova-plugin-console cordova-plugin-device cordova-plugin-background-mode
+ionic cordova plugin add cordova-plugin-inappbrowser cordova-plugin-network-information cordova-plugin-splashscreen cordova-plugin-whitelist ionic-plugin-keyboard
+
+/Volumes/Mac HD/dev/ionic/app-cidadefm-ionic/platforms/android/build/outputs/apk/release/android-release-unsigned.apk
+
+./zipalign -v 4 /Volumes/Mac\ HD/dev/ionic/app-cidadefm-ionic/platforms/android/build/outputs/apk/release/android-release-unsigned.apk /Volumes/Mac\ HD/dev/ionic/app-cidadefm-ionic/platforms/android/build/outputs/apk/release/cidadefm897mc.apk
+
+keytool -importkeystore -srckeystore my-release-key.keystore -destkeystore my-release-key.keystore -deststoretype pkcs12
+
+keytool -importkeystore -srckeystore testapk.keystore -destkeystore testapk.keystore -deststoretype pkcs12
+
+ionic cordova plugin add cordova-plugin-device cordova-plugin-background-mode
