@@ -37,7 +37,7 @@ angular.module('starter.controllers', [])
 
 
     $scope.isPlaying = false;
-    var src = '';
+    var src = 'https://rafabarzotto.github.io/app-radiocidade-configs/url.json';
 
     $scope.getItems = function() {
         $http.get("https://rafabarzotto.github.io/app-radiocidade-configs/url.json")
@@ -57,6 +57,12 @@ angular.module('starter.controllers', [])
         } catch (err) {
 
         }
+    }
+
+    $scope.refreshPlay = function() {
+        if(src == "https://rafabarzotto.github.io/app-radiocidade-configs/url.json"){
+            $scope.getItems();
+        } 
     }
 
     $scope.pauseWebAudio = function() {
@@ -249,16 +255,7 @@ angular.module('starter.controllers', [])
     }
 
     $scope.dialCell = function(number) {
-        var confirmPopup = $ionicPopup.confirm({
-            title: 'Realizar Ligação?',
-            template: 'Tem certeza que deseja realizar a ligação?'
-        });
-
-        confirmPopup.then(function(res) {
-            if (res) {
-                window.open('tel:' + number, '_system');
-            } else {}
-        });
+        window.open('https://api.whatsapp.com/send?1=pt_BR&phone=' + number, "_system");
     }
 
 });
