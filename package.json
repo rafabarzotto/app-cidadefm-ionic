@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "app: An Ionic project",
   "dependencies": {
-    "@angular-devkit/build-angular": "^0.13.8",
+    "@angular-devkit/build-angular": "^15.0.0",
     "@ionic/angular": "^4.3.1",
     "@ionic/angular-toolkit": "^1.5.1",
     "cordova-android": "8.0.0",
